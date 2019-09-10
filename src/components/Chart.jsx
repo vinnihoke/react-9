@@ -11,14 +11,14 @@ import {
 
 const Chart = ({ sparklineData }) => {
   const formattedData = sparklineData
-    .map((price, idx) => {
-      if (idx % 6 === 0) {
-        const timeToSubtract = 168 - idx;
+    .map((price, i) => {
+      if (i % 6 === 0) {
+        const timeToSubtract = 168 - i;
         const date = moment()
           .subtract(timeToSubtract, "hours")
           .format("ddd h:mma");
         return { value: price, date };
-      } else if (idx === sparklineData.length - 1) {
+      } else if (i === sparklineData.length - 1) {
         const date = moment().format("ddd h:mma");
         return { value: price, date };
       }
